@@ -41,7 +41,7 @@ task :generate do
   logger = Logger.new(STDOUT)
   logger.level = Logger::INFO
   api_config = BingAdsApi::ApiConfig
-  versions = api_config.versions()
+  versions = [:v13]
   versions.each do |version|
     code_path = 'lib/%s/%s' % [api_config.api_name.to_s.snakecase, version]
     wsdls = BingAdsApi::ApiConfig.get_wsdls(version)
