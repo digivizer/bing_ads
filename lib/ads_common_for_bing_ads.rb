@@ -48,6 +48,15 @@ module AdsCommonForBingAds
 
 end
 
+AdsCommon::Build::SavonRegistry.class_eval do
+  def extract_input_parameters(op_node, doc)
+    output_element = REXML::XPath.first(op_node, 'descendant::wsdl:input')
+    output_name = get_element_name(output_element)
+    output_fields = find_sequence_fields(output_name, doc)
+    return {:name => output_name.snakecase, :fields => output_fields}
+  end  
+end
+
 AdsCommon::Build::SavonServiceGenerator::SERVICE_TEMPLATE = %q{<% %>
   # Encoding: utf-8
   #
