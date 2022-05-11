@@ -11,7 +11,8 @@ require 'ads_common/savon_service'
 require 'bing_ads_api/v13/reporting_service_registry'
 
 module BingAdsApi; module V13; module ReportingService
-  class ReportingService < AdsCommon::SavonService
+  class ReportingService < AdsCommonForBingAds::SavonService
+
     def initialize(config, endpoint)
       namespace = 'https://bingads.microsoft.com/Reporting/v13'
       super(config, endpoint, namespace, :v13)

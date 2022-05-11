@@ -11,7 +11,7 @@ require 'bing_ads_api/errors'
 
 module BingAdsApi; module V13; module ReportingService
   class ReportingServiceRegistry
-    REPORTINGSERVICE_METHODS = {:submit_generate_report=>{:input=>[], :output=>{:name=>"submit_generate_report_response", :fields=>[]}, :original_name=>"SubmitGenerateReport"}, :poll_generate_report=>{:input=>[], :output=>{:name=>"poll_generate_report_response", :fields=>[]}, :original_name=>"PollGenerateReport"}}
+    REPORTINGSERVICE_METHODS = {:submit_generate_report=>{:input=> {:name=>"submit_generate_report_request", :fields=>[]}, :output=>{:name=>"submit_generate_report_response", :fields=>[]}, :original_name=>"SubmitGenerateReport"}, :poll_generate_report=>{:input=>[], :output=>{:name=>"poll_generate_report_response", :fields=>[]}, :original_name=>"PollGenerateReport"}}
     REPORTINGSERVICE_TYPES = {}
     REPORTINGSERVICE_NAMESPACES = []
 
