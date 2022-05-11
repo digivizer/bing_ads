@@ -37,6 +37,7 @@ class AdsCommonForBingAds::SavonService < AdsCommon::SavonService
   # Executes the SOAP request with original SOAP name.
   def execute_soap_request(action, args, extra_namespaces)
     ns = AdsCommonForBingAds::SavonHeaders::BaseHeaderHandler::DEFAULT_NAMESPACE
+
     original_input_name = get_service_registry.get_method_signature(action)[:input][:name].to_s.camelize
     original_action_name = get_service_registry.get_method_signature(action)[:original_name].to_s.camelize
     original_action_name = action if original_action_name.nil?

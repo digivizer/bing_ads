@@ -35,11 +35,12 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
 
   s.add_dependency('activesupport', '>= 3.1.0')
-  s.add_dependency('addressable', '~> 2.8.0')
-  s.add_dependency('google-ads-common', '~> 1.0.0')
+  s.add_dependency('addressable', '~> 2.3.8')
+  s.add_dependency('google-ads-common', '~> 0.9.3')
   # s.add_dependency('httpi', '1.1.0')# problem with httpi 1.1.0 or savon 1.2.0
-  s.add_dependency('savon')# problem with httpi 1.1.0 or savon 1.2.0
+  s.add_dependency('savon', '~>1.2.0')# problem with httpi 1.1.0 or savon 1.2.0
   s.add_development_dependency('rack', '>= 1.6.12')
-  s.add_development_dependency 'rake', '< 11.0'
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec', '~> 2.8'
+  s.add_development_dependency 'dotenv'
 end

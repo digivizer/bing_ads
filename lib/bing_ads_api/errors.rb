@@ -106,7 +106,7 @@ module BingAdsApi
       "1027" => "CampaignServiceCashBackStatusRequired",
       "1028" => "CampaignServiceCashbackInfoShouldBeNullForBackwardCompatability",
       "1029" => "CampaignServiceCustomerIdHasToBeSpecified",
-      "1033" => "CampaignServiceAccountIdHasToBeSpecified",
+      "1030" => "CampaignServiceAccountIdHasToBeSpecified",
       "1031" => "CampaignServiceCannotPerformCurrentOperation",
       "2928" => "CampaignServiceCustomerDataBeingMigrated",
       "1032" => "CampaignServiceNegativeKeywordsLimitExceeded",

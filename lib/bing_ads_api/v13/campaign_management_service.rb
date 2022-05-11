@@ -11,7 +11,7 @@ require 'ads_common/savon_service'
 require 'bing_ads_api/v13/campaign_management_service_registry'
 
 module BingAdsApi; module V13; module CampaignManagementService
-  class CampaignManagementService < AdsCommon::SavonService
+  class CampaignManagementService < AdsCommonForBingAds::SavonService
     def initialize(config, endpoint)
       namespace = 'https://bingads.microsoft.com/CampaignManagement/v13'
       super(config, endpoint, namespace, :v13)

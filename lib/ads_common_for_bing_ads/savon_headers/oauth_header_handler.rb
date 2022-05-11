@@ -21,9 +21,10 @@ module AdsCommonForBingAds
 
         request.url = soap.endpoint
 
-        soap.header['wsdl:AuthenticationToken'] =  @auth_handler.auth_string(credentials)
-        soap.header['wsdl:DeveloperToken'] =  credentials[:developer_token]
-        soap.header['wsdl:CustomerAccountId'] =  credentials[:customer_account_id]
+        soap.header['v13:AuthenticationToken'] =  @auth_handler.auth_string(credentials)
+        soap.header['v13:DeveloperToken'] =  credentials[:developer_token]
+        soap.header['v13:CustomerAccountId'] =  credentials[:customer_account_id]
+        soap.header['v13:CustomerId'] =  credentials[:customer_id]
 
       end
     end
