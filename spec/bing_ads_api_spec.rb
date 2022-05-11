@@ -42,17 +42,21 @@ describe BingAdsApi do
     expect { bing_ads }.to_not raise_error
   end
 
+  let(:service) do
+    bing_ads.service(svc, version)
+  end
+
   context 'v13' do
+    let(:version) { :v13 }
+
     context 'CampaignManagementService' do
-      let(:service) do
-        bing_ads.service(:CampaignManagementService, :v13)
-      end
+      let(:svc) { :CampaignManagementService }
 
       it 'selects the service' do
-        expect { bing_ads.service(:CampaignManagementService, :v13) }.to_not raise_error
+        expect { service }.to_not raise_error
       end
 
-      it 'add_campaigns' do
+      xit 'add_campaigns' do
         service.add_campaigns(
           account_id: customer_account_id,
           campaigns: {
@@ -72,23 +76,26 @@ describe BingAdsApi do
         ).should be_a_kind_of(Hash)
       end
 
-      it 'get_campaigns_by_account_id' do
+      xit 'get_campaigns_by_account_id' do
         service.get_campaigns_by_account_id({ account_id: customer_account_id }).should be_a_kind_of(Hash)
       end
     end
 
     context 'CampaignManagementService' do
-      let(:service) { bing_ads.service(:CampaignManagementService, :v13) }
+      let(:svc) { :CampaignManagementService }
 
       it 'get_campaigns_by_account_id' do
-        campaigns = service.get_campaigns_by_account_id({ account_id: customer_account_id})
-        #campaigns.should be_a_kind_of(Hash)
-        puts "campaigns=#{campaigns}"
+        VCR.use_cassette('CampaignManagementService') do
+          campaigns = service.get_campaigns_by_account_id({ account_id: customer_account_id})
+          #campaigns.should be_a_kind_of(Hash)
+          puts "campaigns=#{campaigns}"
+        end
       end
     end
 
     context 'ReportingService' do
-      let(:service) { bing_ads.service(:ReportingService, :v13) }
+      let(:svc) { :ReportingService }
+
       let(:message) do
         {
           :report_request => {
@@ -135,57 +142,64 @@ describe BingAdsApi do
         }
       end
 
-      it 'submit_generate_report' do
-        report = service.submit_generate_report(message)
+      xit 'submit_generate_report' do
+        VCR.use_cassette('ReportingService') do
+          report = service.submit_generate_report(message)
+        end
         #campaigns.should be_a_kind_of(Hash)
         puts "report=#{report}"
       end
     end
 
     context 'CustomerManagementService' do
-      let(:service) { bing_ads.service(:CustomerManagementService, :v13) }
+      let(:svc) { :CustomerManagementService }
+
       # get_account, add_account, update_account, delete_account
       # get_customers_info, get_customer, update_customer, signup_customer, delete_customer, get_customer_pilot_feature
       # add_user, update_user, update_user_roles, get_user, delete_user, get_users_info
-      it 'get_customer' do
+      xit 'get_customer' do
         customer = service.get_customer({ customer_id: customer_id})
         customer.should be_a_kind_of(Hash)
         puts "customer=#{customer}"
       end
 
-      it 'get_user' do
+      xit 'get_user' do
         user = service.get_user({ user_id: '226562' })
         user.should be_a_kind_of(Hash)
       end
 
-      it 'get_accounts_info' do
+      xit 'get_accounts_info' do
         customer_accounts = service.get_accounts_info({ customer_id: customer_id})
         customer_accounts.should be_a_kind_of(Hash)
       end
 
-      it 'get_account' do
+      xit 'get_account' do
         customer_account = service.get_account({ account_id: $customer_accounts[:accounts_info][:account_info][:id] })
         customer_account.should be_a_kind_of(Hash)
       end
-      # it "get_users_info" do #DOES NOT WORK IN SANDBOX
-      #  $users_info = $customer_srv13.get_users_info({:customer_id => $default_customer_id})
-      #  $users_info.should be_a_kind_of(Hash)
-      # end
-      # it "get customers info" do #DOES NOT WORK IN SANDBOX
-      #  $customers_infos = $customer_srv13.get_customers_info({})
-      #  $customers_infos.should be_a_kind_of(Hash)
-      # end
-      # it "signup_customer" do #DOES NOT WORK IN SANDBOX
-      #  $customer_srv13.signup_customer({:account => {},
-      #                                  :application_scope => "Advertiser",
-      #                                  :customer => {:id => c[:id], :customer_address => c[:customer_address], :industry => c[:industry], :market => c[:market], :name => c[:name], :time_stamp => c[:time_stamp]},
-      #                                  :parent_customer_id => $customer[:customer][:id],
-      #                                  :user => {}}).should be_a_kind_of(Hash)
-      # end
-      # it "update_customer" do #DOES NOT WORK IN SANDBOX
-      #  c = $customer[:customer]
-      #  $customer_srv13.update_customer({:customer => {:id => c[:id], :customer_address => c[:customer_address], :industry => c[:industry], :market => c[:market], :name => c[:name], :time_stamp => c[:time_stamp]}}).should be_a_kind_of(Hash)
-      # end
+
+      xit "get_users_info" do #DOES NOT WORK IN SANDBOX
+       users_info = service.get_users_info({:customer_id => customer_id})
+       users_info.should be_a_kind_of(Hash)
+      end
+
+      xit "get customers info" do #DOES NOT WORK IN SANDBOX
+       customers_infos = service.get_customers_info({})
+       customers_infos.should be_a_kind_of(Hash)
+      end
+
+      xit "signup_customer" do #DOES NOT WORK IN SANDBOX
+       service.signup_customer({:account => {},
+                                       :application_scope => "Advertiser",
+                                       :customer => {:id => c[:id], :customer_address => c[:customer_address], :industry => c[:industry], :market => c[:market], :name => c[:name], :time_stamp => c[:time_stamp]},
+                                       :parent_customer_id => $customer[:customer][:id],
+                                       :user => {}}).should be_a_kind_of(Hash)
+      end
+
+      xit "update_customer" do #DOES NOT WORK IN SANDBOX
+       c = $customer[:customer]
+       $customer_srv13.update_customer({:customer => {:id => c[:id], :customer_address => c[:customer_address], :industry => c[:industry], :market => c[:market], :name => c[:name], :time_stamp => c[:time_stamp]}}).should be_a_kind_of(Hash)
+      end
     end
   end
 end
