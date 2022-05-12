@@ -28,12 +28,6 @@ describe BingAdsApi do
     )
   end
 
-  before(:all) do # once (and could be modified by the following tests)
-    Savon.configure do |config|
-      config.pretty_print_xml = true
-    end
-  end
-
   it 'comes from a module' do # simple test to init tests
     BingAdsApi.should be_a_kind_of(Module)
   end

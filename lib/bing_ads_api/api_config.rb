@@ -174,6 +174,14 @@ module BingAdsApi
       @@headers_config
     end
 
+    def self.has_version(version)
+      address_config().keys.include?(version)
+    end
+
+    def self.config(key)
+      environment_config(:PRODUCTION, key)
+    end
+
     # Get the download URL for Ad Hoc reports.
     #
     # Args:

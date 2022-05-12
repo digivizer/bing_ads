@@ -10,7 +10,9 @@ AdsCommonForBingAds::ApiConfig.module_eval do
   # Returns:
   # The endpoint URL
   #
-  def endpoint(environment, version, service)
+  def endpoint(version, service)
+    environment = :PRODUCTION
+
     if !address_config().nil?
       address_config()[version][service][environment].to_s
     else

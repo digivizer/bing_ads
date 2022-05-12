@@ -12,6 +12,7 @@ module AdsCommonForBingAds
       }
 
       def auth_string(credentials)
+        @scopes = ['msads.manage']
         token = get_token(credentials)
         token[:access_token]
       end
