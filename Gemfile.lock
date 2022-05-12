@@ -3,7 +3,7 @@ PATH
   specs:
     bing_ads_api (0.0.8)
       activesupport (>= 3.1.0)
-      addressable (~> 2.3.8)
+      addressable
       google-ads-common (~> 0.9.3)
       savon (~> 1.2.0)
 
