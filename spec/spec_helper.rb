@@ -20,4 +20,5 @@ VCR.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.full_backtrace = true
 end
