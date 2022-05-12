@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('activesupport', '>= 3.1.0')
   s.add_dependency('addressable')
-  s.add_dependency('google-ads-common', '~> 1.0.0')
+  s.add_dependency('google-ads-common')
   s.add_dependency('savon')
   s.add_development_dependency('rack', '>= 1.6.12')
   s.add_development_dependency 'rake'
