@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc?singleWsdl
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:v13="https://bingads.microsoft.com/Reporting/v13"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><env:Header><v13:AuthenticationToken><ACCESS_TOKEN></v13:AuthenticationToken><v13:DeveloperToken><DEVELOPER_TOKEN></v13:DeveloperToken><v13:CustomerAccountId><CUSTOMER_ACCOUNT_ID></v13:CustomerAccountId><v13:CustomerId><CUSTOMER_ID></v13:CustomerId></env:Header><env:Body><v13:SubmitGenerateReportRequest
+        xmlns="https://bingads.microsoft.com/Reporting/v13"><v13:ReportRequest xsi:type="CampaignPerformanceReportRequest"
+        xsi:nil="false"><v13:Format>Tsv</v13:Format><v13:Language>English</v13:Language><v13:ReportName>MyReport</v13:ReportName><v13:ReturnOnlyCompleteData>false</v13:ReturnOnlyCompleteData><v13:Aggregation>Daily</v13:Aggregation><v13:Columns><v13:CampaignPerformanceReportColumn>AccountId</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>AccountName</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>CampaignId</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>CampaignName</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>DeliveredMatchType</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>AverageCpc</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>AdDistribution</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>CurrencyCode</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>Impressions</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>Clicks</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>Ctr</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>CostPerConversion</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>Spend</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>AveragePosition</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>TimePeriod</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>CampaignStatus</v13:CampaignPerformanceReportColumn><v13:CampaignPerformanceReportColumn>DeviceType</v13:CampaignPerformanceReportColumn></v13:Columns><v13:Scope><v13:AccountIds><arr:long><CUSTOMER_ACCOUNT_ID></arr:long></v13:AccountIds></v13:Scope><v13:Time><v13:CustomDateRangeEnd><v13:Day>3</v13:Day><v13:Month>3</v13:Month><v13:Year>2022</v13:Year></v13:CustomDateRangeEnd><v13:CustomDateRangeStart><v13:Day>1</v13:Day><v13:Month>3</v13:Month><v13:Year>2022</v13:Year></v13:CustomDateRangeStart></v13:Time></v13:ReportRequest></v13:SubmitGenerateReportRequest></env:Body></env:Envelope>
+    headers:
+      User-Agent:
+      - rspec (AwApi-Ruby/0.0.8, Common-Ruby/1.0.3, GoogleAdsSavon/1.0.4, ruby/2.6.9,
+        HTTPI/2.5.0, httpclient)
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 12 May 2022 07:36:03 GMT
+      Soapaction:
+      - '"SubmitGenerateReport"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '4690'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Date:
+      - Thu, 12 May 2022 07:36:03 GMT
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Kestrel
+      Content-Length:
+      - '408'
+      X-Ms-Requestid:
+      - b64c5564-6897-49a8-95b7-8a4ea26b73fb
+      X-Ms-Trackingid:
+      - b64c5564-6897-49a8-95b7-8a4ea26b73fb
+    body:
+      encoding: UTF-8
+      string: <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Header><h:TrackingId
+        xmlns:h="https://bingads.microsoft.com/Reporting/v13">b64c5564-6897-49a8-95b7-8a4ea26b73fb</h:TrackingId></s:Header><s:Body><SubmitGenerateReportResponse
+        xmlns="https://bingads.microsoft.com/Reporting/v13"><ReportRequestId>351021_1530689</ReportRequestId></SubmitGenerateReportResponse></s:Body></s:Envelope>
+  recorded_at: Thu, 12 May 2022 07:36:04 GMT
+recorded_with: VCR 6.1.0

@@ -93,55 +93,59 @@ describe BingAdsApi do
       let(:message) do
         {
           :report_request => {
-            :exclude_column_headers => true,
-            :exclude_report_footer => true,
-            :exclude_report_header => true,
-            :format => "Csv",
-            :report_name => "Test Report",
+            :format => "Tsv",
+            :language => "English",
+            :report_name => "MyReport",
             :return_only_complete_data => false,
-            :aggregation => "Summary",
-            :columns => [
-              {:campaign_performance_report_column => "AccountId"},
-              {:campaign_performance_report_column => "CampaignId"},
-              {:campaign_performance_report_column => "Keyword"},
-              {:campaign_performance_report_column => "KeywordId"},
-              {:campaign_performance_report_column => "DeviceType"},
-              {:campaign_performance_report_column => "Clicks"},
-            ],
-            :filter => nil,
-            :scope => {
-              :account_ids => [
-                {'a1:long' => customer_account_id}
+            :aggregation => "Daily",
+            :columns => {
+              :campaign_performance_report_column => [
+                "AccountId",
+                "AccountName",
+                "CampaignId",
+                "CampaignName",
+                "DeliveredMatchType",
+                "AverageCpc",
+                "AdDistribution",
+                "CurrencyCode",
+                "Impressions",
+                "Clicks",
+                "Ctr",
+                "CostPerConversion",
+                "Spend",
+                "AveragePosition",
+                "TimePeriod",
+                "CampaignStatus",
+                "DeviceType"
               ],
-              :attributes! => {
-                :account_ids => { 'xmlns:a1' => "http://schemas.microsoft.com/2003/10/Serialization/Arrays"}
-              },
+            },
+            :scope => {
+              :account_ids => {'arr:long' => customer_account_id},
             },
             :time => {
               :custom_date_range_end => {
-                :day => '30',
-                :month => '04',
-                :year => '2022',
+                :day => 3,
+                :month => 3,
+                :year => 2022,
               },
               :custom_date_range_start => {
-                :day => '01',
-                :month => '04',
-                :year => '2022',
+                :day => 1,
+                :month => 3,
+                :year => 2022,
               },
             }
           },
           :attributes! => {
-            :report_request => { 'xsi:type' => 'CampaignPerformanceReportRequest'}
+            :report_request => { 'xsi:type' => 'CampaignPerformanceReportRequest', 'xsi:nil' => false}
           }
         }
       end
 
-      xit 'submit_generate_report' do
+      it 'submit_generate_report' do
         VCR.use_cassette('ReportingService') do
           report = service.submit_generate_report(message)
+          puts "report=#{report}"
         end
-        #campaigns.should be_a_kind_of(Hash)
-        puts "report=#{report}"
       end
     end
 
