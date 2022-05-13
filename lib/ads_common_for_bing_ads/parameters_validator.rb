@@ -13,6 +13,10 @@ module AdsCommonForBingAds
       return args_hash
     end
 
+    def extra_namespaces
+      {"xmlns:arr"=>"http://schemas.microsoft.com/2003/10/Serialization/Arrays"}
+    end
+
     private
 
     # Validates given arguments based on provided fields list.

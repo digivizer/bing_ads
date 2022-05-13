@@ -23,11 +23,11 @@ $:.unshift lib unless $:.include?(lib)
 require 'bing_ads_api/version'
 
 Gem::Specification.new do |s|
-  s.name = 'bing_ads_api_v9'
+  s.name = 'bing_ads_api'
   s.version = BingAdsApi::ApiConfig::CLIENT_LIB_VERSION
   s.summary = 'Ruby wrapper for Bing Ads API v9'
   s.description = 'Ruby wrapper for Bing Ads API v9'
-  s.homepage = 'https://github.com/tomhammond/bing_ads_api_v9'
+  s.homepage = 'https://github.com/digivizer/bing_ads_api'
   s.authors = ['Tom Hammond']
   s.email = ['thomas.hammond89@gmail.com']
   s.require_path = 'lib'
@@ -35,11 +35,13 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
 
   s.add_dependency('activesupport', '>= 3.1.0')
-  s.add_dependency('addressable', '~> 2.3.8')
-  s.add_dependency('google-ads-common', '~> 0.9.3')
-  # s.add_dependency('httpi', '1.1.0')# problem with httpi 1.1.0 or savon 1.2.0
-  s.add_dependency('savon', '~>1.2.0')# problem with httpi 1.1.0 or savon 1.2.0
+  s.add_dependency('addressable')
+  s.add_dependency('google-ads-common')
+  s.add_dependency('savon')
   s.add_development_dependency('rack', '>= 1.6.12')
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec', '~> 2.8'
+  s.add_development_dependency 'dotenv'
+  s.add_development_dependency 'vcr'
+  s.add_development_dependency 'webmock'
 end

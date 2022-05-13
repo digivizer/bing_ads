@@ -1,0 +1,23 @@
+name: Build
+on: [pull_request]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Read ruby version
+        id: ruby-version
+        run: |
+          content=`cat ./.ruby-version`
+          echo "::set-output name=content::$content"
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ steps.ruby-version.outputs.content }}
+          bundler-cache: true
+          cache-version: 1
+      - name: Run tests
+        run: bundle exec rspec

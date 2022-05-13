@@ -1,4 +1,3 @@
-require 'savon'
 require 'httpi'
 require 'active_support/inflector'
 

@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://campaign.api.bingads.microsoft.com/Api/Advertiser/CampaignManagement/v13/CampaignManagementService.svc?singleWsdl
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:v13="https://bingads.microsoft.com/CampaignManagement/v13"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><env:Header><v13:AuthenticationToken><ACCESS_TOKEN></v13:AuthenticationToken><v13:DeveloperToken><DEVELOPER_TOKEN></v13:DeveloperToken><v13:CustomerAccountId><CUSTOMER_ACCOUNT_ID></v13:CustomerAccountId><v13:CustomerId><CUSTOMER_ID></v13:CustomerId></env:Header><env:Body><v13:GetCampaignsByAccountIdRequest
+        xmlns="https://bingads.microsoft.com/CampaignManagement/v13"><v13:AccountId><CUSTOMER_ACCOUNT_ID></v13:AccountId></v13:GetCampaignsByAccountIdRequest></env:Body></env:Envelope>
+    headers:
+      User-Agent:
+      - rspec (AwApi-Ruby/0.0.8, Common-Ruby/1.0.3, GoogleAdsSavon/1.0.4, ruby/2.6.9,
+        HTTPI/2.5.0, httpclient)
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 13 May 2022 01:19:32 GMT
+      Soapaction:
+      - '"GetCampaignsByAccountId"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '2612'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 13 May 2022 01:19:32 GMT
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Kestrel
+      Content-Length:
+      - '7965'
+      X-Ms-Requestid:
+      - 63c5f3ee-41a9-4532-8eac-b47a9eb4e384
+      X-Ms-Trackingid:
+      - 63c5f3ee-41a9-4532-8eac-b47a9eb4e384
+    body:
+      encoding: UTF-8
+      string: <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Header><h:TrackingId
+        xmlns:h="https://bingads.microsoft.com/CampaignManagement/v13">63c5f3ee-41a9-4532-8eac-b47a9eb4e384</h:TrackingId></s:Header><s:Body><GetCampaignsByAccountIdResponse
+        xmlns="https://bingads.microsoft.com/CampaignManagement/v13"><Campaigns xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Campaign><AudienceAdsBidAdjustment>0</AudienceAdsBidAdjustment><BiddingScheme
+        i:type="MaxConversionsBiddingScheme"><Type>MaxConversions</Type><MaxCpc><Amount>1</Amount></MaxCpc></BiddingScheme><BudgetType>DailyBudgetStandard</BudgetType><DailyBudget>1</DailyBudget><ExperimentId
+        i:nil="true"/><FinalUrlSuffix i:nil="true"/><ForwardCompatibilityMap xmlns:a="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/><Id>424877224</Id><Name>Tofu
+        | Branded Keywords | US</Name><Status>Paused</Status><SubType i:nil="true"/><TimeZone>Hobart</TimeZone><TrackingUrlTemplate
+        i:nil="true"/><UrlCustomParameters i:nil="true"/><CampaignType>Search</CampaignType><Settings><Setting
+        i:type="DynamicSearchAdsSetting"><Type>DynamicSearchAdsSetting</Type><DomainName>retailer.global</DomainName><Language>English</Language><PageFeedIds
+        xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/><Source>SystemIndex</Source></Setting></Settings><BudgetId
+        i:nil="true"/><Languages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:string>English</a:string></Languages></Campaign><Campaign><AudienceAdsBidAdjustment>0</AudienceAdsBidAdjustment><BiddingScheme
+        i:type="MaxConversionsBiddingScheme"><Type>MaxConversions</Type><MaxCpc><Amount>1.6</Amount></MaxCpc></BiddingScheme><BudgetType>DailyBudgetStandard</BudgetType><DailyBudget>5</DailyBudget><ExperimentId
+        i:nil="true"/><FinalUrlSuffix i:nil="true"/><ForwardCompatibilityMap xmlns:a="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/><Id>424877225</Id><Name>Tofu
+        | Physio Terms | US</Name><Status>Active</Status><SubType i:nil="true"/><TimeZone>Hobart</TimeZone><TrackingUrlTemplate
+        i:nil="true"/><UrlCustomParameters i:nil="true"/><CampaignType>Search</CampaignType><Settings><Setting
+        i:type="DynamicSearchAdsSetting"><Type>DynamicSearchAdsSetting</Type><DomainName>retailer.global</DomainName><Language>English</Language><PageFeedIds
+        xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/><Source>SystemIndex</Source></Setting></Settings><BudgetId
+        i:nil="true"/><Languages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:string>English</a:string></Languages></Campaign><Campaign><AudienceAdsBidAdjustment>0</AudienceAdsBidAdjustment><BiddingScheme
+        i:type="MaxConversionsBiddingScheme"><Type>MaxConversions</Type><MaxCpc><Amount>2</Amount></MaxCpc></BiddingScheme><BudgetType>DailyBudgetStandard</BudgetType><DailyBudget>25</DailyBudget><ExperimentId
+        i:nil="true"/><FinalUrlSuffix i:nil="true"/><ForwardCompatibilityMap xmlns:a="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/><Id>424877226</Id><Name>Tofu
+        | A Terms | US</Name><Status>Paused</Status><SubType i:nil="true"/><TimeZone>Hobart</TimeZone><TrackingUrlTemplate
+        i:nil="true"/><UrlCustomParameters i:nil="true"/><CampaignType>Search</CampaignType><Settings><Setting
+        i:type="DynamicSearchAdsSetting"><Type>DynamicSearchAdsSetting</Type><DomainName>retailer.global</DomainName><Language>English</Language><PageFeedIds
+        xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/><Source>SystemIndex</Source></Setting></Settings><BudgetId>10239202361382</BudgetId><Languages
+        xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:string>English</a:string></Languages></Campaign><Campaign><AudienceAdsBidAdjustment>0</AudienceAdsBidAdjustment><BiddingScheme
+        i:type="MaxConversionsBiddingScheme"><Type>MaxConversions</Type><MaxCpc><Amount>1.6</Amount></MaxCpc></BiddingScheme><BudgetType>DailyBudgetStandard</BudgetType><DailyBudget>10</DailyBudget><ExperimentId
+        i:nil="true"/><FinalUrlSuffix i:nil="true"/><ForwardCompatibilityMap xmlns:a="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/><Id>424877227</Id><Name>Tofu
+        | Device Terms | US</Name><Status>Active</Status><SubType i:nil="true"/><TimeZone>Hobart</TimeZone><TrackingUrlTemplate
+        i:nil="true"/><UrlCustomParameters i:nil="true"/><CampaignType>Search</CampaignType><Settings><Setting
+        i:type="DynamicSearchAdsSetting"><Type>DynamicSearchAdsSetting</Type><DomainName>retailer.global</DomainName><Language>English</Language><PageFeedIds
+        xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/><Source>SystemIndex</Source></Setting></Settings><BudgetId
+        i:nil="true"/><Languages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:string>English</a:string></Languages></Campaign><Campaign><AudienceAdsBidAdjustment>0</AudienceAdsBidAdjustment><BiddingScheme
+        i:type="MaxConversionsBiddingScheme"><Type>MaxConversions</Type><MaxCpc><Amount>1.6</Amount></MaxCpc></BiddingScheme><BudgetType>DailyBudgetStandard</BudgetType><DailyBudget>10</DailyBudget><ExperimentId
+        i:nil="true"/><FinalUrlSuffix i:nil="true"/><ForwardCompatibilityMap xmlns:a="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/><Id>424877228</Id><Name>ToFu
+        | M Device Terms | US</Name><Status>BudgetPaused</Status><SubType i:nil="true"/><TimeZone>Hobart</TimeZone><TrackingUrlTemplate
+        i:nil="true"/><UrlCustomParameters i:nil="true"/><CampaignType>Search</CampaignType><Settings><Setting
+        i:type="DynamicSearchAdsSetting"><Type>DynamicSearchAdsSetting</Type><DomainName>retailer.global</DomainName><Language>English</Language><PageFeedIds
+        xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/><Source>SystemIndex</Source></Setting></Settings><BudgetId
+        i:nil="true"/><Languages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:string>English</a:string></Languages></Campaign><Campaign><AudienceAdsBidAdjustment>0</AudienceAdsBidAdjustment><BiddingScheme
+        i:type="MaxConversionsBiddingScheme"><Type>MaxConversions</Type><MaxCpc><Amount>1.6</Amount></MaxCpc></BiddingScheme><BudgetType>DailyBudgetStandard</BudgetType><DailyBudget>5</DailyBudget><ExperimentId
+        i:nil="true"/><FinalUrlSuffix i:nil="true"/><ForwardCompatibilityMap xmlns:a="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/><Id>424877229</Id><Name>Tofu
+        | Strength Terms | US</Name><Status>Active</Status><SubType i:nil="true"/><TimeZone>Hobart</TimeZone><TrackingUrlTemplate
+        i:nil="true"/><UrlCustomParameters i:nil="true"/><CampaignType>Search</CampaignType><Settings><Setting
+        i:type="DynamicSearchAdsSetting"><Type>DynamicSearchAdsSetting</Type><DomainName>retailer.global</DomainName><Language>English</Language><PageFeedIds
+        xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/><Source>SystemIndex</Source></Setting></Settings><BudgetId
+        i:nil="true"/><Languages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:string>English</a:string></Languages></Campaign><Campaign><AudienceAdsBidAdjustment>0</AudienceAdsBidAdjustment><BiddingScheme
+        i:type="MaxConversionsBiddingScheme"><Type>MaxConversions</Type><MaxCpc><Amount>1.6</Amount></MaxCpc></BiddingScheme><BudgetType>DailyBudgetStandard</BudgetType><DailyBudget>5</DailyBudget><ExperimentId
+        i:nil="true"/><FinalUrlSuffix i:nil="true"/><ForwardCompatibilityMap xmlns:a="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/><Id>424877230</Id><Name>ToFu
+        | CD Terms | US</Name><Status>Active</Status><SubType i:nil="true"/><TimeZone>Hobart</TimeZone><TrackingUrlTemplate
+        i:nil="true"/><UrlCustomParameters i:nil="true"/><CampaignType>Search</CampaignType><Settings
+        i:nil="true"/><BudgetId i:nil="true"/><Languages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:string>English</a:string></Languages></Campaign></Campaigns></GetCampaignsByAccountIdResponse></s:Body></s:Envelope>
+  recorded_at: Fri, 13 May 2022 01:19:33 GMT
+recorded_with: VCR 6.1.0

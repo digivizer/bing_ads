@@ -1,4 +1,5 @@
 ####### Overriden for Bing Ads #########
+require 'savon'
 
 class AdsCommonForBingAds::SavonService < AdsCommon::SavonService
 
@@ -14,7 +15,7 @@ class AdsCommonForBingAds::SavonService < AdsCommon::SavonService
       args = validator.validate_args(action_name, args)
       response = execute_soap_request(
           action_name.to_sym, args, validator.extra_namespaces)
-      log_headers(response.http.headers)
+      # log_headers(response.http.headers)
       handle_errors(response)
       extractor = AdsCommon::ResultsExtractor.new(registry)
       result = extractor.extract_result(response, action_name, &block)
@@ -37,6 +38,7 @@ class AdsCommonForBingAds::SavonService < AdsCommon::SavonService
   # Executes the SOAP request with original SOAP name.
   def execute_soap_request(action, args, extra_namespaces)
     ns = AdsCommonForBingAds::SavonHeaders::BaseHeaderHandler::DEFAULT_NAMESPACE
+
     original_input_name = get_service_registry.get_method_signature(action)[:input][:name].to_s.camelize
     original_action_name = get_service_registry.get_method_signature(action)[:original_name].to_s.camelize
     original_action_name = action if original_action_name.nil?
@@ -73,15 +75,24 @@ class AdsCommonForBingAds::SavonService < AdsCommon::SavonService
 
   # Creates and sets up Savon client.
   def create_savon_client(endpoint, namespace)
-    Nori.advanced_typecasting = false
-    client = Savon::Client.new do |wsdl, httpi|
+    # Nori.advanced_typecasting = false
+    # client = ::Savon::Client.new do |wsdl, httpi|
+    #   wsdl.endpoint = endpoint
+    #   wsdl.namespace = namespace
+    #   wsdl.element_form_default = :qualified
+    #   AdsCommonForBingAds::Http.configure_httpi(@config, httpi)
+    # end
+    # client.config.raise_errors = false
+    # client.config.logger.subject = get_logger()
+    # return client
+
+    client = GoogleAdsSavon::Client.new do |wsdl, httpi|
       wsdl.endpoint = endpoint
       wsdl.namespace = namespace
-      wsdl.element_form_default = :qualified
-      AdsCommonForBingAds::Http.configure_httpi(@config, httpi)
+      AdsCommon::Http.configure_httpi(@config, httpi)
     end
     client.config.raise_errors = false
-    client.config.logger.subject = get_logger()
+    client.config.logger.subject = NoopLogger.new
     return client
   end
 

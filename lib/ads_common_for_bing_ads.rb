@@ -6,10 +6,11 @@ require 'ads_common/http'
 require 'ads_common/savon_service'
 require 'ads_common/parameters_validator'
 require 'ads_common/build/savon_generator'
+require 'ads_common/build/savon_service_generator'
 require 'ads_common/build/savon_registry'
 require 'ads_common/savon_headers/base_header_handler'
 require 'ads_common/savon_headers/oauth_header_handler'
-require 'ads_common/auth/client_login_handler.rb'
+require 'ads_common/auth/client_login_handler'
 
 ####### AdsCommon Overriden for Bing Ads #########
 module AdsCommonForBingAds
@@ -46,3 +47,50 @@ module AdsCommonForBingAds
 	end
 
 end
+
+AdsCommon::Build::SavonRegistry.class_eval do
+  def extract_input_parameters(op_node, doc)
+    output_element = REXML::XPath.first(op_node, 'descendant::wsdl:input')
+    output_name = get_element_name(output_element)
+    output_fields = find_sequence_fields(output_name, doc)
+    return {:name => output_name.snakecase, :fields => output_fields}
+  end  
+end
+
+AdsCommon::Build::SavonServiceGenerator::SERVICE_TEMPLATE = %q{<% %>
+  # Encoding: utf-8
+  #
+  # This is auto-generated code, changes will be overwritten.
+  #
+  # Copyright:: Copyright <%= @year %>, Google Inc. All Rights Reserved.
+  # License:: Licensed under the Apache License, Version 2.0.
+  #
+  # <%= @generator_stamp %>
+  require 'ads_common/savon_service'
+  require '<%= @require_path %>/<%= @service_name.to_s.snakecase %>_registry'
+
+  <%= @modules_open_string %>
+  class <%= @service_name %> < AdsCommonForBingAds::SavonService
+    def initialize(config, endpoint)
+		  namespace = '<%= @namespace %>'
+		  super(config, endpoint, namespace, :<%= @version %>)
+    end
+
+    <% @actions.each do |action| %>
+    def <%= action %>(*args, &block)
+		  return execute_action('<%= action %>', args, &block)
+    end
+
+    <% end %>
+    private
+
+    def get_service_registry()
+		  return <%= @service_name %>Registry
+    end
+
+    def get_module()
+		  return <%= [@api_name, @version.to_s.upcase, @service_name].join('::') %>
+    end
+  end
+  <%= @modules_close_string %>
+  }.gsub(/^      /, '')
